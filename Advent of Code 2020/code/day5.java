@@ -1,5 +1,3 @@
-package p1;
-
 import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
@@ -11,20 +9,18 @@ import java.util.ArrayList;
  * @author Theresa
  * @version 1.0
  */
-public class codeDay5 {
+public class day5 {
 
     /**
-     * @param args
+     * @param args unused.
      */
     public static void main(String[] args) throws IOException {
         Scanner fileScan;
 
         fileScan = new Scanner(
-                new File("src/adventcodeday5.txt"));
-        ArrayList<String> seats = new ArrayList<String>();
-        
-        int biggest = 0;
-        int biggestIndex = 0;
+                new File("Advent of Code 2020/input/adventcodeday5.txt"));
+        ArrayList<String> seats = new ArrayList<>();
+
         while (fileScan.hasNext()) {
             seats.add(fileScan.next());
         }
@@ -35,7 +31,7 @@ public class codeDay5 {
             seatIDs[seatID] = true;
         }
         
-        ArrayList<Integer> missing = new ArrayList<Integer>();
+        ArrayList<Integer> missing = new ArrayList<>();
         for (Integer index = 0; index < seats.size(); index++) {
             if (seatIDs[index] == false) {
                 missing.add(index);

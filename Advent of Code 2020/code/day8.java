@@ -1,35 +1,35 @@
-package p1;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.IOException;
 
 /**
- * @author Theresa
+ * Advent of Code 2020 day 8.
  *
+ * @author Theresa
+ * @version 1.0
  */
-public class codeDay8 {
+public class day8 {
 
     /**
-     * @param args
+     * @param args unused.
      */
     public static void main(String[] args) throws IOException {
         Scanner fileScan;
         
         fileScan = new Scanner(
-                new File("src/adventcodeday8.txt"));
+                new File("Advent of Code 2020/input/adventcodeday8.txt"));
 
         fileScan.useDelimiter("\n");
-        ArrayList<String> instructions = new ArrayList<String>();
+        ArrayList<String> instructions = new ArrayList<>();
         while (fileScan.hasNext()) {
             instructions.add(fileScan.next());
         }
         
         for (int index = 0; index < instructions.size(); index++) {
             Integer line = 0;
-            ArrayList<Integer> linesRead = new ArrayList<Integer>();
-            ArrayList<String> adjusted = new ArrayList<String>();
+            ArrayList<Integer> linesRead = new ArrayList<>();
+            ArrayList<String> adjusted = new ArrayList<>();
 
             for (String string : instructions) {
                 adjusted.add(string);
@@ -45,6 +45,7 @@ public class codeDay8 {
 
             while (!linesRead.contains(line) && line < adjusted.size() - 1) {
                 String nextLine = adjusted.get(line);
+
                 if (nextLine.startsWith("nop")) {
                     linesRead.add(line);
                     line++;
@@ -53,10 +54,11 @@ public class codeDay8 {
                     line++;
                 } else {
                     linesRead.add(line);
+                    Integer move = Integer.valueOf(nextLine.substring(5, nextLine.length()-1));
                     if (nextLine.charAt(4) == '+') {
-                        line += Integer.valueOf(nextLine.substring(5, nextLine.length() - 1));
+                        line += move;
                     } else {
-                        line -= Integer.valueOf(nextLine.substring(5, nextLine.length() - 1));
+                        line -= move;
                     }
                 }
 
@@ -74,9 +76,10 @@ public class codeDay8 {
         int accumulator = 0;
         Integer line = 0;
         
-        ArrayList<Integer> linesRead = new ArrayList<Integer>();
+        ArrayList<Integer> linesRead = new ArrayList<>();
         while (!linesRead.contains(line) && line < instructions.size() - 1) {
             String nextLine = instructions.get(line);
+            Integer move = Integer.valueOf(nextLine.substring(5, nextLine.length()-1));
             if (nextLine.startsWith("nop")) {
                 linesRead.add(line);
                 line++;
@@ -84,17 +87,16 @@ public class codeDay8 {
                 linesRead.add(line);
                 line++;
                 if (nextLine.charAt(4) == '+') {
-                    accumulator += Integer.valueOf(nextLine.substring(5, nextLine.length()-1));
+                    accumulator += move;
                 } else {
-                    accumulator -= Integer.valueOf(nextLine.substring(5, nextLine.length()-1));
+                    accumulator -= move;
                 }
-
             } else {
                 linesRead.add(line);
                 if (nextLine.charAt(4) == '+') {
-                    line += Integer.valueOf(nextLine.substring(5, nextLine.length()-1));
+                    line += move;
                 } else {
-                    line -= Integer.valueOf(nextLine.substring(5, nextLine.length()-1));
+                    line -= move;
                 }
 
             }

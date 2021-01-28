@@ -1,25 +1,25 @@
-package p1;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.IOException;
 
 /**
- * @author Theresa
+ * Advent of Code 2020 day 6.
  *
+ * @author Theresa
+ * @version 1.0
  */
-public class codeDay6 {
+public class day6 {
 
     /**
-     * @param args
+     * @param args unused.
      */
     public static void main(String[] args) throws IOException {
-        ArrayList<String> forms = new ArrayList<String>();
+        ArrayList<String> forms = new ArrayList<>();
         Scanner fileScan;
         
         fileScan = new Scanner(
-                new File("src/adventcodeday10.txt"));
+                new File("Advent of Code 2020/input/adventcodeday6.txt"));
         fileScan.useDelimiter("\n\r");
         while (fileScan.hasNext()) {
             forms.add(fileScan.next());
@@ -35,7 +35,6 @@ public class codeDay6 {
     }
     
     private static int uniqueLetters(String string) {
-        ArrayList<Character> characters = new ArrayList<Character>();
         char[] chars = new char[26];
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         for (int ind = 0; ind < alphabet.length(); ind++) {
@@ -44,7 +43,7 @@ public class codeDay6 {
         
         Scanner stringScan = new Scanner(string);
         stringScan.useDelimiter("\r");
-        ArrayList<String> people = new ArrayList<String>();
+        ArrayList<String> people = new ArrayList<>();
         while (stringScan.hasNext()) {
             people.add(stringScan.next());
         }
@@ -55,7 +54,6 @@ public class codeDay6 {
                     chars[index1] = ' ';
                 }
             }
-
         }
         
         int counter = 0;

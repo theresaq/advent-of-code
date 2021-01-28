@@ -1,33 +1,34 @@
-package p1;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.IOException;
 
 /**
- * @author Theresa
+ * Advent of Code 2020 day 7.
+ * Second part of day 7 still being worked on.
  *
+ * @author Theresa
+ * @version 1.0
  */
-public class codeDay7 {
+public class day7 {
 
     /**
-     * @param args
+     * @param args unused.
      */
     public static void main(String[] args) throws IOException {
         Scanner fileScan;
         
         fileScan = new Scanner(
-                new File("src/adventcodeday7.txt"));
+                new File("Advent of Code 2020/input/adventcodeday7.txt"));
 
         fileScan.useDelimiter("\n");
-        ArrayList<String> bags = new ArrayList<String>();
+        ArrayList<String> bags = new ArrayList<>();
         while (fileScan.hasNext()) {
             bags.add(fileScan.next());
         }
         
         int counter = 0;
-        ArrayList<String> goldContains = new ArrayList<String>();
+        ArrayList<String> goldContains = new ArrayList<>();
         for (String bag : bags) {
             if (bag.startsWith("shiny gold")) {
                 ArrayList<String> contains = containsColors(bag);
@@ -54,8 +55,8 @@ public class codeDay7 {
             }
         }
         
-        ArrayList<Integer> containsNum2 = new ArrayList<Integer>();
-        ArrayList<String> contains1 = new ArrayList<String>();
+        ArrayList<Integer> containsNum2 = new ArrayList<>();
+        ArrayList<String> contains1 = new ArrayList<>();
         for (String color : goldContains) {
             for (String bag : bags) {
                 if (bag.startsWith(color)) {
@@ -82,9 +83,6 @@ public class codeDay7 {
             counter = counter + containsNum2.get(index);
         }
 
-        System.out.println(contains1);
-        
-        
         System.out.println(counter);
     }
     
@@ -95,7 +93,7 @@ public class codeDay7 {
     }
 
     private static ArrayList<Integer> getNumbers(String string) {
-        ArrayList<Integer> nums = new ArrayList<Integer>();
+        ArrayList<Integer> nums = new ArrayList<>();
         
         String regex = "[0-9]+";
         for (int index = 0; index < string.length(); index++) {
@@ -108,7 +106,7 @@ public class codeDay7 {
     }
     
     private static ArrayList<String> containsColors(String string) {
-        ArrayList<Integer> indices = new ArrayList<Integer>();
+        ArrayList<Integer> indices = new ArrayList<>();
         
         String regex = "[0-9]+";
         for (int index = 0; index < string.length(); index++) {
@@ -117,10 +115,10 @@ public class codeDay7 {
             }
         }
 
-        ArrayList<String> colors = new ArrayList<String>();
-        for (Integer indice : indices) {
-            int endIndex = string.indexOf("bag", indice);
-            colors.add(string.substring(indice + 2, endIndex - 1));
+        ArrayList<String> colors = new ArrayList<>();
+        for (Integer index : indices) {
+            int endIndex = string.indexOf("bag", index);
+            colors.add(string.substring(index + 2, endIndex - 1));
         }
         
         return colors;

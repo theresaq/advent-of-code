@@ -1,16 +1,15 @@
-package p1;
-
 import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Advent of code day 4.
+ * Advent of Code 2020 day 4.
  * 
  * @author Theresa
+ * @version 1.0
  */
-public class codeDay4 {
+public class day4 {
 
     /**
      * Drives the program.
@@ -19,17 +18,17 @@ public class codeDay4 {
      */
     
     public static void main(String[] args) throws IOException {
-        ArrayList<String> passports = new ArrayList<String>();
+        ArrayList<String> passports = new ArrayList<>();
         Scanner fileScan;
-        
+
         fileScan = new Scanner(
-                new File("src/adventcodeday4.txt"));
+                new File("Advent of Code 2020/input/adventcodeday4.txt"));
         fileScan.useDelimiter("\n\r");
         while (fileScan.hasNext()) {
             passports.add(fileScan.next());
         }
 
-        ArrayList<String> complete = new ArrayList<String>();
+        ArrayList<String> complete = new ArrayList<>();
         int valid = 0;
         for (String passport: passports) {
             if (passport.contains("ecl")
@@ -112,7 +111,7 @@ public class codeDay4 {
         int pidIndex = passport.indexOf("pid:");
         String substring = passport.substring(pidIndex);
         String replaceSpace = substring.replaceAll("[\s\r]", "-");
-        int nextIndex = replaceSpace.indexOf("-", 0);
+        int nextIndex = replaceSpace.indexOf("-");
         String passportID = replaceSpace.substring(4, nextIndex);
 
         boolean valid = false;
@@ -129,7 +128,7 @@ public class codeDay4 {
         
         String substring = passport.substring(hclIndex);
         String replaceSpace = substring.replaceAll("[\s\r]", "-");
-        int nextIndex = replaceSpace.indexOf("-", 0);
+        int nextIndex = replaceSpace.indexOf("-");
         String hairColor = replaceSpace.substring(4, nextIndex);
         String hairColorCode = replaceSpace.substring(5, nextIndex);
         
@@ -147,19 +146,17 @@ public class codeDay4 {
         
         String substring = passport.substring(hgtIndex);
         String replaceSpace = substring.replaceAll("[\s\r]", "-");
-        int nextIndex = replaceSpace.indexOf("-", 0);
+        int nextIndex = replaceSpace.indexOf("-");
         String height = replaceSpace.substring(4, nextIndex);
         
         boolean valid = false;
+        String heightNum = height.substring(0, height.length() - 2);
+        Integer hgt = Integer.parseInt(heightNum);
         if (height.endsWith("cm")) {
-            String heightNum = height.substring(0, height.length() - 2);
-            Integer hgt = Integer.parseInt(heightNum);
             if (hgt >= 150 && hgt <= 193) {
                 valid = true;
             }
         } else if (height.endsWith("in")) {
-            String heightNum = height.substring(0, height.length() - 2);
-            Integer hgt = Integer.parseInt(heightNum);
             if (hgt >= 59 && hgt <= 76) {
                 valid = true;
             }

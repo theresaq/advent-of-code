@@ -1,28 +1,28 @@
-package p1;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.IOException;
 
 /**
- * @author Theresa
+ * Advent of Code 2020 day 9.
  *
+ * @author Theresa
+ * @version 1.0
  */
-public class codeDay9 {
+public class day9 {
 
     /**
-     * @param args
+     * @param args unused.
      */
     public static void main(String[] args) throws IOException {
         Scanner fileScan;
         
         fileScan = new Scanner(
-                new File("src/adventcodeday9.txt"));
+                new File("Advent of Code 2020/input/adventcodeday9.txt"));
 
         fileScan.useDelimiter("\r\n");
         
-        ArrayList<Long> numbers = new ArrayList<Long>();
+        ArrayList<Long> numbers = new ArrayList<>();
         while (fileScan.hasNext()) {
             numbers.add(Long.valueOf(fileScan.next()));
         }
@@ -30,7 +30,7 @@ public class codeDay9 {
         System.out.println(findWeakness());
         int weaknessIndex = numbers.indexOf(findWeakness());
 
-        ArrayList<Long> available = new ArrayList<Long>();
+        ArrayList<Long> available = new ArrayList<>();
         for (int index = 0; index < weaknessIndex; index++) {
             available.add(numbers.get(index));
         }
@@ -38,7 +38,7 @@ public class codeDay9 {
         //iterate over the possible different number of numbers to add
         for (int length = 2; length <= available.size(); length++) {
             for (int index = 0; index < available.size() - length + 1; index++) {
-                ArrayList<Long> numsToAdd = new ArrayList<Long>();
+                ArrayList<Long> numsToAdd = new ArrayList<>();
                 numsToAdd.add(available.get(index));
                 int iterate = 1;
                 while (iterate < length) {
@@ -57,8 +57,8 @@ public class codeDay9 {
         boolean isSum = false;
         
         for (int index1 = 0; index1 < numbers.size(); index1++) {
-            for (int index2 = 0; index2 < numbers.size(); index2++) {
-                if ((numbers.get(index1) != numbers.get(index2) && numbers.get(index1) + numbers.get(index2) == num)) {
+            for (Long number : numbers) {
+                if ((numbers.get(index1) != number && numbers.get(index1) + number == num)) {
                     isSum = true;
                 }
             }
@@ -71,18 +71,18 @@ public class codeDay9 {
         Scanner fileScan;
         
         fileScan = new Scanner(
-                new File("src/adventcodeday9.txt"));
+                new File("Advent of Code 2020/input/adventcodeday9.txt"));
 
         fileScan.useDelimiter("\r\n");
         
-        ArrayList<Long> numbers = new ArrayList<Long>();
+        ArrayList<Long> numbers = new ArrayList<>();
         while (fileScan.hasNext()) {
             numbers.add(Long.valueOf(fileScan.next()));
         }
 
-        ArrayList<Long> valid = new ArrayList<Long>();
+        ArrayList<Long> valid = new ArrayList<>();
         for (int index = 25; index < numbers.size(); index++) {
-            ArrayList<Long> previous = new ArrayList<Long>();
+            ArrayList<Long> previous = new ArrayList<>();
             for (int index1 = index - 25; index1 < index; index1++) {
                 previous.add(numbers.get(index1));
             }

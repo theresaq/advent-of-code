@@ -1,5 +1,3 @@
-package p1;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -7,23 +5,25 @@ import java.io.IOException;
 import java.util.Collections;
 
 /**
- * @author Theresa
+ * Advent of Code 2020 day 10.
  *
+ * @author Theresa
+ * @version 1.0
  */
-public class codeDay10 {
+public class day10 {
 
     /**
-     * @param args
+     * @param args unused.
      */
     public static void main(String[] args) throws IOException {
         Scanner fileScan;
         
         fileScan = new Scanner(
-                new File("src/adventcodeday10.txt"));
+                new File("Advent of Code 2020/input/adventcodeday10.txt"));
 
         fileScan.useDelimiter("\r\n");
         
-        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        ArrayList<Integer> numbers = new ArrayList<>();
         while (fileScan.hasNext()) {
             numbers.add(Integer.valueOf(fileScan.next()));
         }
